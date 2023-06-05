@@ -1,0 +1,30 @@
+[
+    {
+        "name": "FLASK_ENV",
+        "value": "development"
+    },
+    {
+        "name": "FLASK_CONFIG",
+        "value": "development"
+    },
+    {
+        "name": "POSTGRES_DB",
+        "value": "postgres"
+    },
+    {
+        "name": "POSTGRES_USER",
+        "value": "postgres"
+    },
+    {
+        "name": "POSTGRES_HOST",
+        "value": "localhost"
+    },
+    {
+        "name": "POSTGRES_PW",
+        "value": "123456"
+    },
+    {
+        "name": "APPLICATION_DB",
+        "value": "scenariodb"
+    }
+]

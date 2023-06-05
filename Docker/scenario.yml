@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+    db:
+        image: postgres:14.1
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PW}
+        ports:
+            - "5432"
+
+    web:
+        build:
+            context: ${PWD}
+            dockerfile: Docker/Dockerfile
+        environment:
+            FLASK_ENV: ${FLASK_ENV}
+            APP_CONFIG: ${APP_CONFIG}
+            APPLICATION_DB: ${APPLICATION_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_HOST: "db"
+            POSTGRES_PW: ${POSTGRES_PW}
+        command: flask run --host 0.0.0.0
+        volumes:
+            - ${PWD}:/opt/code
+        ports:
+            - "5000"

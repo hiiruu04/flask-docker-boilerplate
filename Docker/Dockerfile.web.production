@@ -1,0 +1,25 @@
+FROM python:3.10-slim-bullseye
+
+RUN useradd proto
+
+WORKDIR /home/proto
+
+COPY requirements/production.txt requirements/production.txt
+RUN apt update
+RUN apt install build-essential python3-dev libpq-dev -y
+RUN python -m venv venv
+RUN venv/bin/pip install -r requirements/production.txt
+RUN venv/bin/pip install gunicorn
+
+COPY flaskr flaskr
+COPY migrations migrations
+COPY wsgi.py .flaskenv boot.sh ./
+RUN chmod +x boot.sh
+
+# ENV SECRET_KEY dev
+
+RUN chown -R proto:proto ./
+USER proto
+
+EXPOSE 5000
+ENTRYPOINT ["./boot.sh"]

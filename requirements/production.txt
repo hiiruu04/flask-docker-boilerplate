@@ -1,0 +1,9 @@
+Flask
+flask-sqlalchemy
+psycopg2
+flask-migrate
+Flask-Pydantic
+flask-openapi3
+pandas
+autopep8
+gunicorn
